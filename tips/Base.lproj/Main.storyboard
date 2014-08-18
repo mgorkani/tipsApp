@@ -49,7 +49,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.60626998228045959" blue="0.83561428069774224" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.36370607431795099" green="0.48328475974231744" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="N1T-1e-H6E" appends="YES" id="ZR6-E4-zQI"/>
@@ -57,6 +58,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="aA1-oj-fBV">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="crH-jq-Uru">
+                            <color key="tintColor" red="0.18071302380000001" green="0.69840693980000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="z7W-Pp-Ahh" kind="modal" id="vhd-H9-y2J"/>
                             </connections>
@@ -86,13 +88,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set the default tip percentages:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="coB-nQ-3rr">
-                                <rect key="frame" x="13" y="96" width="287" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lhk-42-FEp">
                                 <rect key="frame" x="13" y="132" width="75" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -142,8 +137,16 @@
                                     <action selector="percentageChanged:" destination="gm3-se-4Cb" eventType="editingChanged" id="GTY-uI-Jkq"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set the default tip percentages:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="coB-nQ-3rr">
+                                <rect key="frame" x="13" y="90" width="287" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.5404220843904326" blue="0.77021615620057027" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.18071302382064525" green="0.69840693982950763" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="35e-ta-mWl" appends="YES" id="xMU-QS-3V3"/>
@@ -152,6 +155,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Settings" id="3Uk-6r-xT9">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="0By-hd-WB1">
+                            <color key="tintColor" red="0.33471968259573248" green="0.48912081289948273" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="goBack:" destination="gm3-se-4Cb" id="YcN-oo-XPL"/>
                             </connections>

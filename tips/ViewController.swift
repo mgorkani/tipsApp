@@ -17,23 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        totalLabel.text = "$0.00"
-        totalLabel.hidden = true
-        tipLabel.text = "$0.00"
-        tipLabel.hidden = true
-        tipControl.hidden = true
-        var totalLabelFrame = self.totalLabel.frame
-        totalLabelFrame.origin.y += 100
-        var billFieldFrame = self.billField.frame
-        billFieldFrame.origin.y += 100
-        var tipControlFrame = self.tipControl.frame
-        tipControlFrame.origin.y += 100
-        var tipLabelFrame = self.tipLabel.frame
-        tipLabelFrame.origin.y += 100
-        self.totalLabel.frame = totalLabelFrame
-        self.billField.frame = billFieldFrame
-        self.tipControl.frame = tipControlFrame
-        self.tipLabel.frame = tipLabelFrame
+        
         
        
         
@@ -42,6 +26,8 @@ class ViewController: UIViewController {
    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
        
         let defaults = NSUserDefaults.standardUserDefaults()
         var goodValue = defaults.integerForKey("goodPercentage")
@@ -75,9 +61,7 @@ class ViewController: UIViewController {
                 if ((nowSecs - lastSecs) < 60) {
                     billField.text = billValue
                  
-                    tipControl.hidden = false
-                    tipLabel.hidden = false
-                    tipControl.hidden = false
+                    
                 }
                 else {
                     defaults.setValue("",forKey:"billValue")
@@ -87,7 +71,39 @@ class ViewController: UIViewController {
             }
             
         }
+        if (billField.text.isEmpty)
+        {
+            totalLabel.text = "$0.00"
+            totalLabel.hidden = true
+            tipLabel.text = "$0.00"
+            tipLabel.hidden = true
+            tipControl.hidden = true
+            var totalLabelFrame = self.totalLabel.frame
+            totalLabelFrame.origin.y += 100
+            var billFieldFrame = self.billField.frame
+            billFieldFrame.origin.y += 100
+            var tipControlFrame = self.tipControl.frame
+            tipControlFrame.origin.y += 100
+            var tipLabelFrame = self.tipLabel.frame
+            tipLabelFrame.origin.y += 100
+            self.totalLabel.frame = totalLabelFrame
+            self.billField.frame = billFieldFrame
+            self.tipControl.frame = tipControlFrame
+            self.tipLabel.frame = tipLabelFrame
+            self.animated = false
+        }
+        else
+        {
+           self.animated = true
+           self.calculateTip()
+            
+        }
         
+        
+        
+        
+        
+        billField.becomeFirstResponder()
         
         
         
@@ -105,6 +121,35 @@ class ViewController: UIViewController {
 
     @IBAction func onEditingChanged(sender: AnyObject) {
         
+        if (animated && billField.text.isEmpty)
+        {
+            animated = false
+            UIView.animateWithDuration(1.0, delay: 0, options: .CurveEaseOut, animations: {
+                
+                var totalLabelFrame = self.totalLabel.frame
+                totalLabelFrame.origin.y += 100
+                var billFieldFrame = self.billField.frame
+                billFieldFrame.origin.y += 100
+                var tipControlFrame = self.tipControl.frame
+                tipControlFrame.origin.y += 100
+                var tipLabelFrame = self.tipLabel.frame
+                tipLabelFrame.origin.y += 100
+                self.totalLabel.frame = totalLabelFrame
+                self.billField.frame = billFieldFrame
+                self.tipControl.frame = tipControlFrame
+                self.tipLabel.frame = tipLabelFrame
+                self.tipLabel.hidden = true
+                self.tipControl.hidden = true
+                self.totalLabel.hidden = true
+                
+                
+                }, completion: { finished in
+                   println("got the animation")
+                })
+            return;
+
+            
+        }
       
         if (!animated) {
             animated = true;
@@ -128,22 +173,24 @@ class ViewController: UIViewController {
                 
                 
                 }, completion: { finished in
-                    println("Napkins opened!")
+                    
                 })
         }
-       
-        var billAmount = billField.text.bridgeToObjectiveC().doubleValue;
-        
-        
-       
-        var tip = billAmount * tipPercentages[tipControl.selectedSegmentIndex]
-        var total = billAmount + tip
-        totalLabel.text = String(format:"$%.2f",total)
-        tipLabel.text = String(format:"$%.2f",tip)
+        self.calculateTip()
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setValue(billField.text,forKey:"billValue")
     defaults.setInteger(Int(NSDate().timeIntervalSince1970),forKey:"lastSetDate")
         defaults.synchronize()
+    }
+    
+    func calculateTip() {
+        var billAmount = billField.text.bridgeToObjectiveC().doubleValue;
+        
+        var tip = billAmount * tipPercentages[tipControl.selectedSegmentIndex]
+        var total = billAmount + tip
+        totalLabel.text = String(format:"$%.2f",total)
+        tipLabel.text = String(format:"$%.2f",tip)
+        
     }
 
    
