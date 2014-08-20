@@ -62,7 +62,7 @@ class SettingsViewController: UIViewController {
         if (sender == goodTextField)
         {
             let a:Int? = sender.text.toInt();
-            if (a) {
+            if ((a) != nil) {
                 defaults.setInteger(a!,forKey:"goodPercentage")
             }
             
@@ -71,7 +71,7 @@ class SettingsViewController: UIViewController {
         if (sender == verySatisTextField)
         {
             let a:Int? = sender.text.toInt();
-            if (a) {
+            if ((a) != nil) {
                 defaults.setInteger(a!,forKey:"verySatisPercentage")
             }
             
@@ -80,7 +80,7 @@ class SettingsViewController: UIViewController {
         if (sender == excellentTextField)
         {
             let a:Int? = sender.text.toInt();
-            if (a) {
+            if ((a) != nil) {
                 defaults.setInteger(a!,forKey:"excellentPercentage")
             }
             

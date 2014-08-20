@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         tipPercentages[2] = Double(excellentValue)/100
         
         let billValue = defaults.stringForKey("billValue");
-        if (billValue) {
+        if ((billValue) != nil) {
             let lastSecs = defaults.integerForKey("lastSetDate")
             if (lastSecs > 0) {
                 let nowSecs = Int(NSDate().timeIntervalSince1970)
@@ -184,7 +184,7 @@ class ViewController: UIViewController {
     }
     
     func calculateTip() {
-        var billAmount = billField.text.bridgeToObjectiveC().doubleValue;
+        var billAmount = NSString(string: billField.text).doubleValue;
         
         var tip = billAmount * tipPercentages[tipControl.selectedSegmentIndex]
         var total = billAmount + tip
